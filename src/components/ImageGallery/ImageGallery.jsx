@@ -3,7 +3,7 @@ import './ImageGallery.css';
 
 const ImageGallery = ({ images }) => {
   return (
-    <ul className="imageGallery">
+    <ul className="image-gallery">
       {images.map(image => (
         <ImageGalleryItem key={image.id} image={image} />
       ))}

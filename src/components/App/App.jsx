@@ -4,6 +4,7 @@ import '../../styles.css';
 import ImageGallery from 'components/ImageGallery';
 import PixabayApi from 'components/Api/Api';
 import Button from 'components/Button/Button';
+import Modal from 'components/Modal';
 
 class App extends Component {
   state = { gallery: [], searchQuery: '' };
