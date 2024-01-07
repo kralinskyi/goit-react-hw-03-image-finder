@@ -4,3 +4,7 @@
   grid-gap: 16px;
   padding-bottom: 24px;
 }
+
+.app Blocks {
+  justify-items: center;
+}
