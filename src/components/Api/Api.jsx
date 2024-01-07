@@ -12,11 +12,11 @@ class PixabayApi {
     this.baseURL = `https://pixabay.com/api/`;
   }
 
-  async getPhotos() {
+  async getPhotos(searchQuery) {
     try {
       const params = {
         key: this.API_KEY,
-        q: this.query,
+        q: searchQuery || '',
         image_type: this.image_type,
         orientation: this.orientation,
         safesearch: this.safesearch,
