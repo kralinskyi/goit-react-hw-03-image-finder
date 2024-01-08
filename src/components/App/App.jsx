@@ -26,17 +26,17 @@ class App extends Component {
         this.request.resetPage();
         const images = await this.request.getPhotos(this.state.searchQuery);
 
-        if (images.total < this.request.per_page) {
+        if (images.totalHits < this.request.per_page) {
           this.setState({ showLoadMore: false });
         } else {
           this.setState({ showLoadMore: true });
         }
 
-        if (!images.total) {
+        if (!images.totalHits) {
           Notify.failure(`No such results like ${this.state.searchQuery}`);
         } else {
           Notify.success(
-            `${images.total} results searching ${this.state.searchQuery}`
+            `${images.totalHits} results searching ${this.state.searchQuery}`
           );
         }
 
@@ -60,10 +60,6 @@ class App extends Component {
         gallery: [...prevState.gallery, ...images.hits],
       }));
 
-      console.log(this.state.gallery.length);
-      console.log(images.total);
-      console.log(this.state.gallery.length < images.total);
-
       if (images.hits.length < this.request.per_page) {
         this.setState({ showLoadMore: false });
         Notify.warning(`That was all results..`);
@@ -80,14 +76,13 @@ class App extends Component {
   };
 
   render() {
+    const { gallery, isLoading, showLoadMore } = this.state;
     return (
       <div className="app">
         <Searchbar onSubmit={this.onSubmit} />
-        <ImageGallery images={this.state.gallery} />
-        <Spinner isLoading={this.state.isLoading} />
-        {this.state.showLoadMore && (
-          <Button onClick={this.handleLoadMoreButton} />
-        )}
+        <ImageGallery images={gallery} />
+        <Spinner isLoading={isLoading} />
+        {showLoadMore && <Button onClick={this.handleLoadMoreButton} />}
       </div>
     );
   }

@@ -9,17 +9,17 @@ class ImageGalleryItem extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('keydown', this.keyDown);
+    window.addEventListener('keydown', this.keyEscDown);
   }
 
-  keyDown = evt => {
+  keyEscDown = evt => {
     if (evt.code === 'Escape' && this.state.modalIsOpen) {
       this.closeModal();
     }
   };
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.keyDown);
+    window.removeEventListener('keydown', this.keyEscDown);
   }
 
   closeModal = () => {
@@ -29,10 +29,12 @@ class ImageGalleryItem extends Component {
   render() {
     const { webformatURL, largeImageURL } = this.props.image;
     const { modalIsOpen } = this.state;
+
     return (
       <>
         <li className="gallery-item">
           <img
+            loading="lazy"
             src={webformatURL}
             alt={webformatURL}
             className="gallery-item-image "
