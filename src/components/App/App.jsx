@@ -1,6 +1,5 @@
 import Searchbar from 'components/Searchbar';
 import { Component } from 'react';
-import '../../styles.css';
 import ImageGallery from 'components/ImageGallery';
 import PixabayApi from 'components/Api/Api';
 import Button from 'components/Button/Button';
@@ -36,12 +35,16 @@ class App extends Component {
         if (!images.total) {
           Notify.failure(`No such results like ${this.state.searchQuery}`);
         } else {
-          Notify.success(`Results by serching ${this.state.searchQuery}`);
+          Notify.success(
+            `${images.total} results searching ${this.state.searchQuery}`
+          );
         }
 
         this.setState({ gallery: [...images.hits] });
       } catch (error) {
         console.log(error);
+        this.setState({ error });
+        Notify.failure(`Something went wrong: ${error}`);
       } finally {
         this.setState({ isLoading: false });
       }

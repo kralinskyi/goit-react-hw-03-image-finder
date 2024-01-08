@@ -31,7 +31,7 @@ class PixabayApi {
     } catch (error) {
       console.error(error);
     }
-    throw Error;
+    // throw Error;
   }
 
   resetPage() {

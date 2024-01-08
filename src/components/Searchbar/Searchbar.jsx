@@ -1,11 +1,19 @@
 import { IoSearchSharp } from 'react-icons/io5';
 import './Searchbar.css';
+import { Notify } from 'notiflix';
 
 const Searchbar = ({ onSubmit }) => {
   const onSearchSubmit = e => {
     e.preventDefault();
 
-    onSubmit(e.currentTarget.elements.searchQuery.value);
+    const currentSearch = e.currentTarget.elements.searchQuery.value.trim();
+
+    if (currentSearch === '') {
+      Notify.failure(`Please wrigth something.`);
+      return;
+    }
+
+    onSubmit(currentSearch);
 
     e.currentTarget.elements.searchQuery.value = '';
   };
