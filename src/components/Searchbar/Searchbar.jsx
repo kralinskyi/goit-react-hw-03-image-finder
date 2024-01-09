@@ -1,6 +1,7 @@
 import { IoSearchSharp } from 'react-icons/io5';
 import './Searchbar.css';
 import { Notify } from 'notiflix';
+import PropTypes from 'prop-types';
 
 const Searchbar = ({ onSubmit }) => {
   const onSearchSubmit = e => {
@@ -38,6 +39,10 @@ const Searchbar = ({ onSubmit }) => {
       </form>
     </header>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;

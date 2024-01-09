@@ -5,7 +5,6 @@ import PixabayApi from 'components/Api/Api';
 import Button from 'components/Button/Button';
 import Spinner from 'components/Spinner';
 import { Notify } from 'notiflix';
-// import Modal from 'components/Modal';
 
 class App extends Component {
   state = {

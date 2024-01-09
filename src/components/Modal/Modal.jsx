@@ -1,4 +1,5 @@
 import './Modal.css';
+import PropTypes from 'prop-types';
 
 const Modal = ({ url, onClick }) => {
   return (
@@ -8,6 +9,11 @@ const Modal = ({ url, onClick }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  url: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Modal;
